@@ -1,0 +1,33 @@
+# EMA 사전학습 로그 (Colab A100, scripts/train_ema.py와 같은 설정, 845종목 1990-2025)
+# val_pred: 2024-2025 검증 구간의 다음날 표현 예측 오차 (target encoder 공간)
+# identity: "내일 표현 = 오늘 표현" 예측의 오차 (같은 공간). val_pred/identity가 낮을수록 좋음
+# 학습 구간 ~2023-12-31, 검증 2024-01-01~, window_cap=600000, ema_m=0.996
+
+train windows: 5067201, val windows: 424190, window_cap=600000, ema_m=0.996
+
+=== LR scan (EMA): orig ===   (seed 42, 4 epoch, 20만 창)
+  [orig s42 lr=5e-04] -> val_pred=0.0906 identity=0.1029 std_z=0.593 eff_rank=6.4
+  [orig s42 lr=2e-04] -> val_pred=0.0371 identity=0.0402 std_z=0.373 eff_rank=5.0
+  [orig s42 lr=1e-04] -> val_pred=0.0223 identity=0.0235 std_z=0.279 eff_rank=3.3
+  [orig s42 lr=5e-05] -> val_pred=0.0215 identity=0.0224 std_z=0.242 eff_rank=2.3
+  [orig s42 lr=1e-05] -> val_pred=0.0254 identity=0.0143 std_z=0.166 eff_rank=1.7
+
+=== LR scan (EMA): ts ===
+  [ts s42 lr=5e-04] -> val_pred=0.0533 identity=0.1392 std_z=0.498 eff_rank=11.1
+  [ts s42 lr=2e-04] -> val_pred=0.0368 identity=0.0915 std_z=0.380 eff_rank=9.0
+  [ts s42 lr=1e-04] -> val_pred=0.0302 identity=0.0667 std_z=0.326 eff_rank=6.8
+  [ts s42 lr=5e-05] -> val_pred=0.0205 identity=0.0398 std_z=0.293 eff_rank=5.6
+  [ts s42 lr=1e-05] -> val_pred=0.0199 identity=0.0130 std_z=0.185 eff_rank=5.6
+
+orig: 5e-04=0.0906  2e-04=0.0371  1e-04=0.0223  5e-05=0.0215  1e-05=0.0254   -> best=5e-05
+ts:   5e-04=0.0533  2e-04=0.0368  1e-04=0.0302  5e-05=0.0205  1e-05=0.0199   -> best=1e-05
+
+=== 본 학습 (8 epoch, 60만 창/epoch) ===
+  [orig s7  lr=5e-05] -> val_pred=0.0287 identity=0.0341 std_z=0.398 eff_rank=6.2  -> checkpoints/orig_ema_trained_s7.pt
+  [orig s42 lr=5e-05] -> val_pred=0.0285 identity=0.0334 std_z=0.373 eff_rank=5.6  -> checkpoints/orig_ema_trained_s42.pt
+  [orig s99 lr=5e-05] -> val_pred=0.0319 identity=0.0373 std_z=0.369 eff_rank=6.6  -> checkpoints/orig_ema_trained_s99.pt
+  [ts   s7  lr=1e-05] -> val_pred=0.0274 identity=0.0626 std_z=0.332 eff_rank=5.3  -> checkpoints/ts_ema_trained_s7.pt
+  [ts   s42 lr=1e-05] -> val_pred=0.0231 identity=0.0493 std_z=0.304 eff_rank=5.6  -> checkpoints/ts_ema_trained_s42.pt
+  [ts   s99 lr=1e-05] -> val_pred=0.0326 identity=0.1132 std_z=0.379 eff_rank=7.2  -> checkpoints/ts_ema_trained_s99.pt
+
+# seed 평균: orig val_pred/identity = 0.850, ts val_pred/identity = 0.398

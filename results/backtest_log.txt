@@ -1,0 +1,48 @@
+[12:59:04] panel: 9067 days x 845 tickers
+[12:59:04] building 22-feature grid ...
+[12:59:44]   BLEND-ts-random s7: ARR 32.99%
+[12:59:51]   BLEND-ts-random s42: ARR 32.29%
+[12:59:58]   BLEND-ts-random s99: ARR 33.87%
+[13:00:05]   BLEND-ts-ema-trained s7: ARR 36.17%
+[13:00:12]   BLEND-ts-ema-trained s42: ARR 37.60%
+[13:00:19]   BLEND-ts-ema-trained s99: ARR 35.01%
+[13:00:26]   BLEND-ts-sigreg-trained s7: ARR 36.12%
+[13:00:33]   BLEND-ts-sigreg-trained s42: ARR 33.49%
+[13:00:40]   BLEND-ts-sigreg-trained s99: ARR 32.73%
+[13:00:42]   BLEND-orig-random s7: ARR 38.05%
+[13:00:44]   BLEND-orig-random s42: ARR 40.04%
+[13:00:46]   BLEND-orig-random s99: ARR 36.32%
+[13:00:48]   BLEND-orig-ema-trained s7: ARR 38.36%
+[13:00:50]   BLEND-orig-ema-trained s42: ARR 38.06%
+[13:00:52]   BLEND-orig-ema-trained s99: ARR 36.70%
+[13:00:54]   BLEND-orig-sigreg-trained s7: ARR 38.12%
+[13:00:56]   BLEND-orig-sigreg-trained s42: ARR 37.42%
+[13:00:58]   BLEND-orig-sigreg-trained s99: ARR 34.81%
+[13:00:58] === 성과 ===
+[13:00:58] M                            ARR  27.31%  SR 1.11  MDD -61.6%
+[13:00:58] BLEND-RAW                    ARR  38.92%  SR 1.37  MDD -57.3%
+[13:00:58] BLEND-ts-random              ARR  33.14%  SR 1.25  MDD -60.8%
+[13:00:58] BLEND-ts-ema-trained         ARR  36.35%  SR 1.33  MDD -57.3%
+[13:00:58] BLEND-ts-sigreg-trained      ARR  34.18%  SR 1.27  MDD -57.9%
+[13:00:58] BLEND-orig-random            ARR  38.21%  SR 1.38  MDD -58.2%
+[13:00:58] BLEND-orig-ema-trained       ARR  37.78%  SR 1.36  MDD -60.4%
+[13:00:58] BLEND-orig-sigreg-trained    ARR  36.85%  SR 1.34  MDD -58.1%
+[13:00:58] === Newey-West 검정 ===
+[13:01:35] BLEND-RAW vs M: t=+5.080 p=3.771e-07 dARR=+11.64pp CI[7.51, 16.21]
+[13:02:12] BLEND-ts-random vs M: t=+4.006 p=6.169e-05 dARR=+5.84pp CI[3.03, 8.83]
+[13:02:49] BLEND-ts-ema-trained vs M: t=+5.343 p=9.16e-08 dARR=+9.05pp CI[5.72, 12.62]
+[13:03:26] BLEND-ts-sigreg-trained vs M: t=+4.981 p=6.314e-07 dARR=+6.88pp CI[4.00, 9.91]
+[13:04:03] BLEND-orig-random vs M: t=+5.401 p=6.623e-08 dARR=+10.92pp CI[7.19, 15.05]
+[13:04:40] BLEND-orig-ema-trained vs M: t=+5.385 p=7.242e-08 dARR=+10.50pp CI[6.80, 14.52]
+[13:05:17] BLEND-orig-sigreg-trained vs M: t=+5.088 p=3.626e-07 dARR=+9.54pp CI[6.07, 13.48]
+[13:05:54] BLEND-ts-ema-trained vs BLEND-ts-random: t=+3.251 p=0.001151 dARR=+3.21pp CI[1.33, 5.08]
+[13:06:31] BLEND-ts-ema-trained vs BLEND-RAW: t=-1.890 p=0.05881 dARR=-2.59pp CI[-5.55, 0.17]
+[13:07:08] BLEND-ts-sigreg-trained vs BLEND-ts-random: t=+1.157 p=0.2473 dARR=+1.04pp CI[-0.73, 2.75]
+[13:07:45] BLEND-ts-sigreg-trained vs BLEND-RAW: t=-2.957 p=0.003111 dARR=-4.76pp CI[-7.95, -1.85]
+[13:08:22] BLEND-orig-ema-trained vs BLEND-orig-random: t=-0.440 p=0.66 dARR=-0.42pp CI[-1.87, 1.05]
+[13:08:59] BLEND-orig-ema-trained vs BLEND-RAW: t=-1.009 p=0.3128 dARR=-1.14pp CI[-3.61, 1.28]
+[13:09:36] BLEND-orig-sigreg-trained vs BLEND-orig-random: t=-1.686 p=0.09183 dARR=-1.38pp CI[-2.90, 0.08]
+[13:10:13] BLEND-orig-sigreg-trained vs BLEND-RAW: t=-1.784 p=0.07449 dARR=-2.10pp CI[-4.80, 0.47]
+[13:10:50] BLEND-orig-ema-trained vs BLEND-orig-sigreg-trained: t=+1.569 p=0.1165 dARR=+0.96pp CI[-0.37, 2.32]
+[13:11:27] BLEND-ts-ema-trained vs BLEND-orig-sigreg-trained: t=-0.539 p=0.5901 dARR=-0.50pp CI[-2.35, 1.32]
+[13:11:27] saved -> /Users/natejin/Documents/GradSchool/인공지능대학원 팀플/TS_JEPA_Proposal/results
